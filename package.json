@@ -7,7 +7,8 @@
     "webpack": "ENTORNO=desarrollo webpack",
     "dev": "ENTORNO=desarrollo webpack --watch",
     "build": "ENTORNO=produccion webpack -p",
-    "serve": "ENTORNO=desarrollo webpack-dev-server"
+    "serve": "ENTORNO=desarrollo webpack-dev-server",
+    "json-server": "json-server --watch db.json --port 3001"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^4.1.0",
+    "json-server": "^0.12.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
