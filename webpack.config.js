@@ -19,7 +19,7 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader?url=false', 'sass-loader']
+                use: ['style-loader', 'css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
             }, {
                 test: /\.js$/,
                 use: 'babel-loader',
