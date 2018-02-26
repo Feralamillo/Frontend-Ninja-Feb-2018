@@ -44,6 +44,9 @@ module.exports = {
             }, {
                 test: /assets.[^img]/,
                 use: 'file-loader?name=[name].[ext]&useRelativePath=true'
+            }, {
+                test: /\.(html|ejs)$/,
+                use: ['html-loader', 'ejs-html-loader']
             }
         ]
     },
