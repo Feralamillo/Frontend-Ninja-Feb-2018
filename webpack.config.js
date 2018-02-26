@@ -58,6 +58,13 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
+        new HtmlWebpackPlugin({
+            filename: 'contact.html',
+            template: path.join(__dirname, 'src', 'contact.html'),
+            minify: {
+                collapseWhitespace: true
+            }
+        }),
         new ExtractTextPlugin('style.css')
     ],
 
