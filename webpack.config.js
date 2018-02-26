@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
@@ -19,7 +19,11 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
+                })
+                // use: ['style-loader', 'css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
             }, {
                 test: /\.js$/,
                 use: 'babel-loader',
@@ -47,6 +51,7 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
+        new ExtractTextPlugin('style.css')
     ],
 
     // dev server configuration
