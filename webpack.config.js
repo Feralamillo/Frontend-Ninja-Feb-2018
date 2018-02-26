@@ -3,6 +3,17 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const isProduction = process.env.ENTORNO == "produccion";
+let scssLoaders = [];
+if (isProduction) {
+    scssLoaders = ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
+    });
+} else {
+    scssLoaders = ['style-loader', 'css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true'];
+}
+
 module.exports = {
 
     // entry point: archivo que lee webpack para construir el grafo de dependencias
@@ -19,11 +30,7 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
-                })
-                // use: ['style-loader', 'css-loader?url=false&sourceMap=true', 'sass-loader?sourceMap=true']
+                use: scssLoaders
             }, {
                 test: /\.js$/,
                 use: 'babel-loader',
