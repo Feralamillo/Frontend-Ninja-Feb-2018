@@ -1,30 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Listen</title>
-</head>
-<body>
-    <header class="web-header">
-        <h1 class="web-title">Listen</h1>
-    </header>
-    <section class="songs-list">
-        <% for (let i = 0; i < 15; i++) { %>
-        <article class="song">
-            <div class="cover">
-                <img src="<%= require('./assets/img/disk-empty.png') %>" alt="Artist name - Song title">
-            </div>
-            <div class="info">
-                <div class="title">Song title</div>
-                <div class="artist">Artist name</div>
-            </div>
-        </article>
-        <% } %>
-    </section>
-    <footer class="web-footer">
-        2018 &copy; All rights reserved.
-    </footer>
-</body>
-</html>
+<%- include('includes/header.html') %>
+<section class="songs-list">
+    <% for (let i = 0; i < 15; i++) { %>
+    <article class="song">
+        <div class="cover">
+            <img src="./assets/img/disk-empty.png" alt="Artist name - Song title">
+        </div>
+        <div class="info">
+            <div class="title">Song title</div>
+            <div class="artist">Artist name</div>
+        </div>
+    </article>
+    <% } %>
+</section>
+<%- include('includes/footer.html') %>
