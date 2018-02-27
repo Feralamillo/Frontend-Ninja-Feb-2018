@@ -4,6 +4,7 @@ body {
     font-size: $font-size-base;
     color: $main-text-color;
     background: url('#{$images-path}doodles.png');
+    padding-top: $header-height;
 }
 
 // Estilos de los títulos
@@ -27,3 +28,34 @@ a {
 
 // Elementos responsive
 img, video, embed, object { max-width: 100%; }
+
+// Estilos de elementos de formulario
+input {
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+    border: 1px solid $border-color;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: $font-size-base;
+    &.error {
+        border: 1px solid $error-color;
+        color: $error-color;
+    }
+    &:focus {
+        outline-color: $outline-color;
+    }
+}
+
+button {
+    @extend input;
+    background-color: $button-background;
+    color: white;
+    transition: all $default-transition-time;
+    &:hover {
+        background: lighten($button-background, 10%);
+    }
+    &[disabled] {
+        opacity: 0.25;
+    }
+}

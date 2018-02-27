@@ -33,6 +33,8 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "animate.css": "^3.6.1",
+    "font-awesome": "^4.7.0",
     "moment": "^2.20.1",
     "reset-css": "^2.2.1"
   }

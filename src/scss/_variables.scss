@@ -31,6 +31,10 @@ $links-color: $color-grandmas-pillow;
 $links-hover-color: $color-cheery-pink;
 $brand-color: $color-cheery-pink;
 $shadow-color: lighten(black, 30%);
+$border-color: $color-mightly-slate;
+$button-background: $color-mightly-slate;
+$error-color: $color-grandmas-pillow;
+$outline-color: $color-pacifica;
 
 // Transitions
 $default-transition-time: 0.25s;
@@ -40,3 +44,6 @@ $small-device-width: 376px;
 $medium-device-width: 576px;
 $large-device-width: 750px;
 $extra-large-device-width: 900px;
+
+// Layout sizes
+$header-height: 73px;
