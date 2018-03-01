@@ -2,12 +2,33 @@
 
 export class FormController {
 
-    constructor(selector) {
+    constructor(selector, songsService) {
         this.element = document.querySelector(selector);
+        this.songsService = songsService;
         this.addEventListeners();
     }
 
     addEventListeners() {
+        this.addInputListeners();
+        this.addFormSubmitListener();
+    }
+
+    addFormSubmitListener() {
+        this.element.addEventListener('submit', event => {
+            event.preventDefault();
+            let song = this.buildSongData();
+        });
+    }
+
+    buildSongData() {
+        return {
+            artist: this.element.querySelector('#artist').value,
+            title: this.element.querySelector('#title').value,
+            cover: this.element.querySelector('#cover').value
+        }
+    }
+
+    addInputListeners() {
         // en todos los input que hay en el formulario, los valido cuando se pierde el foco
         this.element.querySelectorAll('input').forEach(input => {
 
@@ -25,17 +46,12 @@ export class FormController {
     }
 
     checkFormValidity() {
-        // comprobar si todos los inputs son válidos
-        const formElements = this.element.querySelectorAll('input');
-        for (let formElement of formElements) {
-            if (formElement.checkValidity() == false) {
-                // si alguno de los campos no es válido, deshabilitamos el boton
-                this.element.querySelector("button").disabled = true;
-                return; // termino la ejecución de la funcíon
-            }
+        let button = this.element.querySelector('button');
+        if (this.element.checkValidity()) {
+            button.disabled = false;
+        } else {
+            button.disabled = true;
         }
-        // si el bucle termina, sé que todos los campos son válidos
-        this.element.querySelector("button").disabled = false;
     }
 
 }

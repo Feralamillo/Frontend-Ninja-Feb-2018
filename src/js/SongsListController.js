@@ -1,10 +1,8 @@
-import { SongsService } from './SongsService';
-
-
 export class SongsListController {
 
-    constructor(selector) {
+    constructor(selector, songsService) {
         this.element = document.querySelector(selector);
+        this.songsService = songsService;
     }
 
     showLoadingMessage() {
@@ -37,8 +35,7 @@ export class SongsListController {
 
     loadSongs() {
         this.showLoadingMessage();
-        let songsService = new SongsService();
-        songsService.list().then(songs => {
+        this.songsService.list().then(songs => {
             if (songs.length == 0) {
                 this.showNoSongsMessage();
             } else {
