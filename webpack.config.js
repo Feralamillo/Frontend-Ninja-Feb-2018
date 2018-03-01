@@ -44,9 +44,6 @@ module.exports = {
             }, {
                 test: /assets.[^img]/,
                 use: 'file-loader?name=[name].[ext]&useRelativePath=true'
-            }, {
-                test: /\.(html|ejs)$/,
-                use: ['html-loader', 'ejs-html-loader']
             }
         ]
     },
@@ -77,7 +74,7 @@ module.exports = {
         port: 3000, // puerto del servidor web
         overlay: true, // muestra los errores en pantalla
         hot: true,
-        contentBase: path.join(__dirname, 'src'),
+        contentBase: [path.join(__dirname, 'src'), path.join(__dirname, 'src/includes')],
         watchContentBase: true
     }
 

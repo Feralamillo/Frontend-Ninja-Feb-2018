@@ -1,4 +1,4 @@
-<%- include('includes/header.html') %>
+<%= require('html-loader!./includes/header.html') %>
 <section class="songs-list"></section>
 <form novalidate class="songs-form animated slideInDown">
     <div>
@@ -14,4 +14,4 @@
         <button disabled>Create song</button>
     </div>
 </form>
-<%- include('includes/footer.html') %>
+<%= require('html-loader!./includes/footer.html') %>
