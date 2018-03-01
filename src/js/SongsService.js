@@ -14,7 +14,10 @@ export class SongsService {
     async save(song) {
         const response = await fetch(this.url, {
             method: 'post',
-            body: JSON.stringify(song)
+            body: JSON.stringify(song),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         return response.json();
     }

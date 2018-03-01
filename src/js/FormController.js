@@ -5,7 +5,13 @@ export class FormController {
     constructor(selector, songsService) {
         this.element = document.querySelector(selector);
         this.songsService = songsService;
+        this.loading = false;
         this.addEventListeners();
+    }
+
+    setLoading(loading) {
+        this.loading = loading;
+        this.element.querySelectorAll('input, button').forEach(item => { item.disabled = loading });
     }
 
     addEventListeners() {
@@ -16,7 +22,20 @@ export class FormController {
     addFormSubmitListener() {
         this.element.addEventListener('submit', event => {
             event.preventDefault();
+            if (this.loading) {
+                return;  // si se está cargando, no hacemos nada más
+            }
+            this.setLoading(true);
             let song = this.buildSongData();
+            this.songsService.save(song).then(createdSong => {
+                console.log("CANCION CREADA", createdSong);
+                this.element.reset();
+            }).catch(error => {
+                console.error("SE HA PRODUCIDO UN ERROR");
+                alert(`Se ha producido un error ${error}`);
+            }).finally(() => {
+                this.setLoading(false);
+            })
         });
     }
 

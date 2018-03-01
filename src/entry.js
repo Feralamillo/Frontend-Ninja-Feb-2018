@@ -15,6 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let songsListController = new SongsListController(".songs-list", songsService);
     songsListController.loadSongs();
 
-    let formController = new FormController('.songs-form');
+    let formController = new FormController('.songs-form', songsService);
 
 });
