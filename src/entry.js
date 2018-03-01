@@ -2,6 +2,7 @@ import css from './scss/style.scss';
 import { SongsListController } from './js/SongsListController';
 import { AppController } from './js/AppController';
 import { HeaderController } from './js/HeaderController';
+import { FormController } from './js/FormController';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -10,5 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let songsListController = new SongsListController(".songs-list");
     songsListController.loadSongs();
+
+    let formController = new FormController('.songs-form');
 
 });
