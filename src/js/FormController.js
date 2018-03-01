@@ -2,9 +2,10 @@
 
 export class FormController {
 
-    constructor(selector, songsService) {
+    constructor(selector, songsService, pubSub) {
         this.element = document.querySelector(selector);
         this.songsService = songsService;
+        this.pubSub = pubSub;
         this.loading = false;
         this.addEventListeners();
     }
@@ -30,6 +31,7 @@ export class FormController {
             this.songsService.save(song).then(createdSong => {
                 console.log("CANCION CREADA", createdSong);
                 this.element.reset();
+                this.pubSub.publish('song:created', createdSong);
             }).catch(error => {
                 console.error("SE HA PRODUCIDO UN ERROR");
                 alert(`Se ha producido un error ${error}`);

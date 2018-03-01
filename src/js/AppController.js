@@ -2,8 +2,12 @@
 
 export class AppController {
 
-    constructor(selector) {
+    constructor(selector, pubSub) {
         this.element = document.querySelector(selector);
+        pubSub.subscribe('song:created', (event, song) => {
+            console.log("AppController", song);
+            this.toggleForm();
+        });
     }
 
     toggleForm() {

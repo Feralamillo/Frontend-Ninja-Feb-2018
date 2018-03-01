@@ -1,8 +1,12 @@
 export class SongsListController {
 
-    constructor(selector, songsService) {
+    constructor(selector, songsService, pubSub) {
         this.element = document.querySelector(selector);
         this.songsService = songsService;
+        pubSub.subscribe('song:created', (event, song) => {
+            console.log("SongsListController", song);
+            this.loadSongs();
+        });
     }
 
     showLoadingMessage() {
